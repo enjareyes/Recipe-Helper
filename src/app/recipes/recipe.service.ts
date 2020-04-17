@@ -1,17 +1,16 @@
-import { Recipe } from  './recipe.model'
-import { Ingredient } from  '../shared/ingredient.model'
-import { EventEmitter, Injectable } from '@angular/core';
-import { ShoppingListService } from '../shopping-list/shopping-list.service'
+import { Recipe } from './recipe.model';
+import { Ingredient } from '../shared/ingredient.model';
+import { Injectable } from '@angular/core';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class RecipeService {
-	public recipeSelected = new EventEmitter<Recipe>();
 
 	private recipes: Recipe[] = [
 		new Recipe(
 			'Apple Pie',
 			'Delicious stuff mmmm yeah',
-			"https://lexiscleankitchen.com/wp-content/uploads/2018/07/Paleo-Apple-Pie.jpg",
+			"https://www.cuisinart.com/share/images/recipes/photos/recipe_8553_45006627.jpg",
 			[
 				new Ingredient('Sugar', 3),
 				new Ingredient('Butter', 1),
@@ -21,7 +20,7 @@ export class RecipeService {
 		new Recipe(
 			'Muffins',
 			'Yum muffins mmmm yeah',
-			"https://cdn.sallysbakingaddiction.com/wp-content/uploads/2018/06/blueberry-oatmeal-muffins.jpg",
+			"https://smittenkitchendotcom.files.wordpress.com/2010/08/perfect-blueberry-muffins.jpg?w=1200",
 			[
 				new Ingredient('Butter', 1),
 				new Ingredient('Blueberries', 2),
@@ -34,6 +33,10 @@ export class RecipeService {
 	getRecipes() {
 		// returns copy of the recipes array
 		return this.recipes.slice();
+	}
+
+	getRecipe(index) {
+		return this.recipes[index];
 	}
 
 	addIngredientsToList(ingredients: Ingredient[]) {
